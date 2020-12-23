@@ -1,19 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
+using System.Xml.Linq;
 using TestApi.Pages;
 using Windows.App.Pages;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using Windows.UI;
+using Windows.UI.Notifications;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -44,9 +37,31 @@ namespace Windows.App
             frm_Main.Navigate(typeof(Setting));
         }
 
-        private void btn_Clear_Click(Object sender, RoutedEventArgs e)
+        private async void btn_Clear_Click(Object sender, RoutedEventArgs e)
         {
-            frm_Main.Navigate(typeof(Home));
+            //frm_Main.Navigate(typeof(Home));
+            ContentDialog dialog = new ContentDialog()
+            {
+                Title = "Warning",
+                Content =
+                "Do You want To Delete All Tabs?",
+                CloseButtonText = "No",
+                PrimaryButtonText = "Yes",
+                DefaultButton = ContentDialogButton.Primary,
+                Background = new SolidColorBrush() { Color = new Color() { A = 50,B = 63,G = 228,R = 223} }
+            };
+            var res = await dialog.ShowAsync(ContentDialogPlacement.Popup);
+            if (res == ContentDialogResult.Primary)
+            {
+                frm_Main.Navigate(typeof(Home));
+            }
         }
+
+        private void btn_newCollection_Click(Object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
     }
 }

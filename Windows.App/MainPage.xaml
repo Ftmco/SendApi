@@ -24,7 +24,7 @@
                     <DropDownButton Content="Workspaces" CornerRadius="5" Margin="8,0,0,0">
                         <DropDownButton.Flyout>
                             <MenuFlyout x:Name="drp_WorkSpaces">
-                                
+
                             </MenuFlyout>
                         </DropDownButton.Flyout>
                     </DropDownButton>
@@ -54,7 +54,7 @@
                             <RowDefinition Height="1*"></RowDefinition>
                         </Grid.RowDefinitions>
                         <TextBox CornerRadius="10" PlaceholderText="Search : " FontSize="20" Margin="5" x:Name="txt_collectionSearch"/>
-                        <Button  Grid.Row="1" Content="New Collection" CornerRadius="5" HorizontalAlignment="Center" VerticalAlignment="Top" Width="235" Margin="0,6,0,0"/>
+                        <Button  Grid.Row="1" Content="New Collection" CornerRadius="5" HorizontalAlignment="Center" VerticalAlignment="Top" Width="235" Margin="0,6,0,0" x:Name="btn_newCollection" Click="btn_newCollection_Click"/>
                         <Button Grid.Row="1" Content="Import Collection" CornerRadius="5" HorizontalAlignment="Center" Width="235" Margin="0,50,0,0" VerticalAlignment="Top"/>
                         <Pivot Grid.Row="2" >
                             <PivotItem>
@@ -62,7 +62,7 @@
                                     <TextBlock Text="History" FontSize="15"/>
                                 </PivotItem.Header>
                                 <ListBox x:Name="lst_History" Background="#001F1F1F">
-                                    
+
                                 </ListBox>
                             </PivotItem>
                             <PivotItem >
@@ -79,7 +79,7 @@
                     </Grid>
                 </Border>
                 <Frame Grid.Column="1" x:Name="frm_Main">
-                   
+
                 </Frame>
             </Grid>
         </Grid>

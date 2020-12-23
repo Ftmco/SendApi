@@ -28,16 +28,19 @@ namespace Windows.App.Pages
     public sealed partial class Home : Page
     {
         public string apiName = "Null";
+        int count = 0;
         public Home()
         {
             this.InitializeComponent();
         }
 
-        private  void btn_NewPivot_Click(Object sender, RoutedEventArgs e)
+        private void btn_NewPivot_Click(Object sender, RoutedEventArgs e)
         {
             HomeContent content = new HomeContent();
-            piv_Main.Items.Add(new PivotItem { Header = "Send Request" ,FontSize = 15,Content = content});
+            count++;
+            piv_Main.Items.Add(new PivotItem { Header = "Send Request", FontSize = 15, Content = content ,CornerRadius = new CornerRadius(5)});
         }
 
+      
     }
 }

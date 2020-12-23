@@ -13,10 +13,10 @@
         <Pivot x:Name="piv_Main" FontSize="15">
             <PivotItem>
                 <PivotItem.Header>
-                    <Button Content="+" x:Name="btn_NewPivot" Click="btn_NewPivot_Click"/>
+                    <Button Content="+" x:Name="btn_NewPivot" Click="btn_NewPivot_Click" CornerRadius="5"/>
                 </PivotItem.Header>
             </PivotItem>
-           
+          
         </Pivot>
     </Grid>
 </Page>

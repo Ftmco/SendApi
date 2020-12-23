@@ -33,8 +33,8 @@
                 </MenuFlyout>
             </DropDownButton.Flyout>
         </DropDownButton>
-        <TextBox Margin="126,25,91,25" CornerRadius="5" PlaceholderText="URL" FontSize="20"/>
-        <Button Content="Send" FontSize="20" Margin="0,0,10,0" Width="76" Height="50" CornerRadius="5" HorizontalAlignment="Right"/>
+        <TextBox Margin="126,25,91,25" CornerRadius="5" PlaceholderText="URL" FontSize="20" x:Name="txt_url"/>
+        <Button Content="Send" FontSize="20" Margin="0,0,10,0" Width="76" Height="50" CornerRadius="5" HorizontalAlignment="Right" x:Name="btn_SendRequest" Click="btn_SendRequest_Click"/>
 
         <ScrollViewer Grid.Row="1">
             <Grid>
@@ -117,30 +117,67 @@
                                     <RowDefinition Height="1*"></RowDefinition>
                                     <RowDefinition Height="1*"></RowDefinition>
                                 </Grid.RowDefinitions>
-                                <ScrollViewer Grid.Row="0">
-                                    <RichEditBox  CornerRadius="10" Padding="10" x:Name="txt_SendData" TabNavigation="Once" Margin="10,5" PlaceholderText="Content Value For Send" FontSize="20" TabIndex="4" FontFamily="Andalus"  >
+                                <Grid Grid.Row="0">
+                                    <RichEditBox MaxHeight="250" CornerRadius="10" Padding="10" x:Name="txt_SendData" TabNavigation="Once" Margin="10,5" PlaceholderText="Content Value For Send" FontSize="20" TabIndex="4"  >
 
                                     </RichEditBox>
-                                </ScrollViewer>
+                                </Grid>
+
                                 <Grid Grid.Row="1">
                                     <Grid.RowDefinitions>
+                                        <RowDefinition Height="25"/>
                                         <RowDefinition Height="1*"></RowDefinition>
                                         <RowDefinition Height="30"></RowDefinition>
                                     </Grid.RowDefinitions>
-                                    <ScrollViewer Grid.Row="0">
-                                        <RichEditBox IsReadOnly="True" PlaceholderText="Result" CornerRadius="10" Padding="10" x:Name="txt_result" Margin="10,5" FontSize="20" FontFamily="Andalus" >
+                                    <TextBlock x:Name="lblStatus" Text="Status" FontSize="15"/>
+                                    <Grid Grid.Row="1">
+
+                                        <RichEditBox MaxHeight="250" Grid.Row="2" PlaceholderText="Result" CornerRadius="10" Padding="10" x:Name="txt_result" Margin="10,5" FontSize="20" >
 
                                         </RichEditBox>
-                                    </ScrollViewer>
-                                    <TextBlock x:Name="lbl_Time" FontSize="20"  Grid.Row="1" HorizontalAlignment="Center" Text="{x:Bind date}"/>
+                                    </Grid>
+
+                                    <TextBlock x:Name="lbl_Time" FontSize="20"  Grid.Row="2" HorizontalAlignment="Center" Text="{x:Bind date}"/>
                                 </Grid>
+
                             </Grid>
+
                         </Grid>
                     </PivotItem>
                     <PivotItem>
                         <PivotItem.Header>
                             <TextBlock Text="Tests"/>
                         </PivotItem.Header>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <DropDownButton Content="Test Langue" CornerRadius="5" Margin="6,0,0,0" Height="50">
+                                    <DropDownButton.Flyout>
+                                        <MenuFlyout Placement="Bottom">
+                                            <MenuFlyoutItem Text="Csharp" x:Name="Csharp" Tag="Csharp"/>
+                                            <MenuFlyoutItem Text="Js" x:Name="Js" Tag="Js"/>
+                                            <MenuFlyoutItem Text="Python" x:Name="Python" Tag="Python"/>
+                                            <MenuFlyoutItem Text="C Plus Plus" x:Name="Cpp" Tag="Cpp"/>
+                                            <MenuFlyoutItem Text="C" x:Name="C" Tag="C"/>
+                                            <MenuFlyoutItem Text="Rust" x:Name="Rust" Tag="Rust"/>
+                                            <MenuFlyoutItem Text="Go" x:Name="Go" Tag="Go"/>
+                                            <MenuFlyoutItem Text="Fsharp" x:Name="Fsharp" Tag="Fsharp"/>
+                                            <MenuFlyoutItem Text="Java" x:Name="Java" Tag="Java"/>
+                                            <MenuFlyoutItem Text="Kotlin" x:Name="Kotlin" Tag="Kotlin"/>
+                                            <MenuFlyoutItem Text="Other..." x:Name="Other" Tag="Other"/>
+                                        </MenuFlyout>
+                                    </DropDownButton.Flyout>
+                                </DropDownButton>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <RichEditBox MaxHeight="450" Header="Test Codes" PlaceholderText="Test Codes" Padding="10" FontSize="20" CornerRadius="10" Margin="15">
+
+                                </RichEditBox>
+                            </Grid>
+                        </Grid>
                     </PivotItem>
                     <PivotItem>
                         <PivotItem.Header>
