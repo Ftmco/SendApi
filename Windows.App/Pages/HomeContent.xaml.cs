@@ -77,6 +77,8 @@ namespace Windows.App.Pages
                 pgr_waitSend.Visibility = Visibility.Visible;
                 pgr_waitSend.IsActive = true;
                 HttpClient client = new HttpClient();
+                txt_result.IsReadOnly = false;
+
                 txt_result.Document.SetText(TextSetOptions.None, "Sending Reuest Please Wait");
 
                 result = await client.GetAsync(txt_url.Text);
@@ -84,7 +86,6 @@ namespace Windows.App.Pages
 
                 pgr_waitSend.IsActive = false;
                 pgr_waitSend.Visibility = Visibility.Collapsed;
-
                 txt_result.Document.SetText(TextSetOptions.None, buitifyReponse);
                 SetResultStatus(result);
                 txt_result.IsReadOnly = true;
@@ -94,15 +95,16 @@ namespace Windows.App.Pages
             {
                 pgr_waitSend.IsActive = false;
                 pgr_waitSend.Visibility = Visibility.Collapsed;
+                txt_result.IsReadOnly = false;
                 txt_result.Document.SetText(TextSetOptions.None, ex.Message);
                 SetColor(200, 203, 1, 1);
 
                 txt_result.IsReadOnly = true;
             }
-
+           
         }
 
-        private static void SetResultStatus(HttpResponseMessage reslut)
+        private void SetResultStatus(HttpResponseMessage result)
         {
             switch (result.StatusCode)
             {
@@ -372,7 +374,7 @@ namespace Windows.App.Pages
         /// <param name="r">Red</param>
         /// <param name="g">Green</param>
         /// <param name="b">blue</param>
-        private static void SetColor(byte a = 200, byte r = 190, byte g = 255, byte b = 179)
+        private void SetColor(byte a = 200, byte r = 190, byte g = 255, byte b = 179)
         {
             lblStatus.Foreground = new SolidColorBrush()
             {
