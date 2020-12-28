@@ -74,14 +74,16 @@ namespace Windows.App.Pages
             HttpResponseMessage result = new HttpResponseMessage();
             try
             {
+                pgr_waitSend.Visibility = Visibility.Visible;
                 pgr_waitSend.IsActive = true;
                 HttpClient client = new HttpClient();
                 txt_result.Document.SetText(TextSetOptions.None, "Sending Reuest Please Wait");
-#pragma warning disable SecurityIntelliSenseCS // MS Security rules violation
+
                 result = await client.GetAsync(txt_url.Text);
-#pragma warning restore SecurityIntelliSenseCS // MS Security rules violation
                 string buitifyReponse = await butify.GetButifyAsync(result.Content.ReadAsStringAsync().Result);
+
                 pgr_waitSend.IsActive = false;
+                pgr_waitSend.Visibility = Visibility.Collapsed;
 
                 txt_result.Document.SetText(TextSetOptions.None, buitifyReponse);
                 SetResultStatus(result);
@@ -91,6 +93,7 @@ namespace Windows.App.Pages
             catch (Exception ex)
             {
                 pgr_waitSend.IsActive = false;
+                pgr_waitSend.Visibility = Visibility.Collapsed;
                 txt_result.Document.SetText(TextSetOptions.None, ex.Message);
                 SetColor(200, 203, 1, 1);
 
@@ -369,7 +372,7 @@ namespace Windows.App.Pages
         /// <param name="r">Red</param>
         /// <param name="g">Green</param>
         /// <param name="b">blue</param>
-        private static void SetColor(byte a, byte r, byte g, byte b)
+        private static void SetColor(byte a = 200, byte r = 190, byte g = 255, byte b = 179)
         {
             lblStatus.Foreground = new SolidColorBrush()
             {
