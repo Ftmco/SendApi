@@ -92,16 +92,8 @@ namespace Windows.App.Pages
             {
                 pgr_waitSend.IsActive = false;
                 txt_result.Document.SetText(TextSetOptions.None, ex.Message);
-                txt_result.Foreground = new SolidColorBrush()
-                {
-                    Color = new Color()
-                    {
-                        A = 200,
-                        B = 1,
-                        R = 203,
-                        G = 1
-                    }
-                };
+                SetColor(200, 203, 1, 1);
+
                 txt_result.IsReadOnly = true;
             }
 
