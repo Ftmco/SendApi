@@ -129,9 +129,12 @@
                                         <RowDefinition Height="1*"></RowDefinition>
                                         <RowDefinition Height="30"></RowDefinition>
                                     </Grid.RowDefinitions>
-                                    <TextBlock x:Name="lblStatus" Text="Status" FontSize="15"/>
+                                    <Grid Grid.Row="0">
+                                        <TextBlock x:Name="lblStatus" Text="Status" FontSize="15" HorizontalAlignment="Left" />
+                                        
+                                    </Grid>
                                     <Grid Grid.Row="1">
-
+                                        <ProgressRing x:Name="pgr_waitSend" Height="148" Width="250" />
                                         <RichEditBox MaxHeight="250" Grid.Row="2" PlaceholderText="Result" CornerRadius="10" Padding="10" x:Name="txt_result" Margin="10,5" FontSize="20" >
 
                                         </RichEditBox>

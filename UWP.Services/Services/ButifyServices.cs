@@ -1,7 +1,4 @@
 ﻿using services.cross.Repository;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace services.cross.Services
@@ -10,12 +7,8 @@ namespace services.cross.Services
     {
         public async Task<string> GetButifyAsync(string text)
         {
-            return await Task.Run(() =>
-            {
-                string responseText = text.Replace("{", "{\n").Replace("}", "}\n").Replace("[{", "[{\n\t").Replace(",",",\n").Replace("\"","\t").Trim();
-               
-                return responseText;
-            });
+            return await Task.Run(() =>            
+                 text.Replace("{", "{\n").Replace("}", "}\n").Replace("[{", "[{\n\t").Replace("\"","\t").Replace(",",",\n").Trim());
         }
     }
 }
